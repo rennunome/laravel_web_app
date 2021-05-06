@@ -3,7 +3,7 @@
 </div>
 <div align="center">
 <h2>メニュー画面</h2>
-<form action="list/list"  method="GET">
+<form action="list"  method="POST">
 @csrf
 <input type="submit" value="問題と答えを確認・登録する ＞ ">
 </form>

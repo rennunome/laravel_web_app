@@ -23,10 +23,14 @@ Route::get('/top', function () {
 
 require __DIR__.'/auth.php';
 
-// //Top画面に遷移
-// Route::get('/top', function () {
-//     return view('top/top');
-// });
-
-//List画面にリストを表示
+//list画面にリストを表示
 Route::post('/list', 'App\Http\Controllers\qaList\listController@showList');
+
+//reg画面表示
+Route::get('/reg', 'App\Http\Controllers\Register\regController@showForm');
+
+//reg入力値バリデーション
+Route::post('/reg', 'App\Http\Controllers\Register\regController@validateForm');
+
+//DB登録
+Route::post('/reg', 'App\Http\Controllers\Register\regController@qaDb');
