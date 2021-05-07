@@ -13,7 +13,7 @@
     <input type="submit" name="confirm" value="登録">
     </form>
 <div align="right">
-	<form action="reg" method="post">
+	<form action="reg" method="GET">
 	@csrf
 		<input type="submit" value="戻る" />
 	</form>

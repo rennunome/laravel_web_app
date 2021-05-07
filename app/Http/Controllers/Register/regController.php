@@ -15,47 +15,29 @@ class regController extends Controller
         return view('list.reg');
     }
     
-    public function validateForm(Request $request)
-    {
-        $question = $request['question'];
-        $answers = $request['answers'];
-        $status = true;
-        $error = $this->validation($question, $answers);
-        if ($error == null) {
-            return view('list.regConfirm', compact('question', 'answers', 'status'));
-        } else {
-            return view('list.reg', ['error' => $error]);
-        }
-    }
-    private function validation($question, $answers)
-    {
-        if($question == null || $answers == null){
-           return "未入力項目があります。"; 
-        }
-        if(mb_strlen($question) > 500){
-            return "問題は500文字以内で入力してください。";
-        }
-        foreach ($answers as $answer){
-            if(mb_strlen($answer) > 200){
-                return "答えは200文字以内で入力してください。";
-            }
-        }
-        return null;
-    }
-    public function qaDb(Request $request)
-    {
-        $question = $request->input('question');
+    // questionsテーブルにinsertして登録したIDを取得
+    private function _insertQuestionByGetLastId($question) {
         $date = date('Y-m-d H:i:s');
         $q = Questions::create(compact('question', 'date', 'date'));
         $questions_id = $q->id;
-        $answers = $request->input('answers');
+        return $questions_id;
+    }
+    // CorrectAnswersにinsertする
+    private function _insertCorrectAnswers($questions_id, $answers) {
         $data = [];
-        foreach($answers as $answer) {
+        foreach ($answers as $answer) {
             $data[] = compact('answer', 'questions_id');
         }
-            DB::table('correct_answers')->insert($data);
-            $questions = Questions::all();
-            $correct_answers = CorrectAnswers::all();
-            return view ('list.list', compact('questions', 'correct_answers'));
+        DB::table('correct_answers')->insert($data);
+    }
+    
+    public function qaDb(Request $request) {
+        $question = $request->input('question');
+        $answers = $request->input('answers');
+        $questions_id = $this->_insertQuestionByGetLastId($question);
+        $this->_insertCorrectAnswers($questions_id, $answers);
+        $questions = Questions::all();
+        $correct_answers = CorrectAnswers::all();
+        return view('list.list', compact('questions', 'correct_answers'));
     }
 }

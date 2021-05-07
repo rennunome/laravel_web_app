@@ -8,14 +8,12 @@ function addForm() {
 input_data.name = 'answers[]';
   var parent = document.getElementById('form_area');
   parent.appendChild(input_data);
-
 //   var input_data2 = document.createElement('input');
 //   input_data2.type = 'hidden';
 //   input_data2.id = 'answer_id' + i;
 //   input_data2.name = 'answer_id';
 //   input_data2.value = 0;
 //   parent.appendChild(input_data2);
-
 var button_data = document.createElement('button');
   button_data.id = i;
  button_data.name = 'delete';
@@ -23,10 +21,8 @@ var button_data = document.createElement('button');
   button_data.innerHTML = '削除';
  var input_area = document.getElementById(input_data.id);
   parent.appendChild(button_data);
-
   i++ ;
 }
-
 function deleteBtn(target) {
   var target_id = target.id;
   var parent = document.getElementById('form_area');
@@ -38,8 +34,14 @@ function deleteBtn(target) {
 </script>
 
 <h2>問題・答え新規登録画面</h2>
-<form action="reg" method="post" id="qaForm">
+<form action="regValidate" method="post" id="qaForm">
 @csrf
+<?php 
+if(isset($error))
+{
+echo $error; 
+}?>
+<br />
 	<label for="question">問題：</label>
 	<input type="text" name="question" /><br />
 	<label for="answer">答え：</label><br />
