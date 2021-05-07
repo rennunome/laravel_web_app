@@ -35,8 +35,8 @@ class regController extends Controller
         if(mb_strlen($question) > 500){
             return "問題は500文字以内で入力してください。";
         }
-        for($i = 0; $i < count($answers); $i++){
-            if(mb_strlen($answers[$i]) > 200){
+        foreach ($answers as $answer){
+            if(mb_strlen($answer) > 200){
                 return "答えは200文字以内で入力してください。";
             }
         }
@@ -51,10 +51,11 @@ class regController extends Controller
         $answers = $request->input('answers');
         $data = [];
         foreach($answers as $answer) {
-            echo "a";
             $data[] = compact('answer', 'questions_id');
         }
             DB::table('correct_answers')->insert($data);
-        return view ('list.list');
+            $questions = Questions::all();
+            $correct_answers = CorrectAnswers::all();
+            return view ('list.list', compact('questions', 'correct_answers'));
     }
 }

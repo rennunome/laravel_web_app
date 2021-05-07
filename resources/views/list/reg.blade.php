@@ -51,7 +51,7 @@ function deleteBtn(target) {
 </form>
 <br>
 <div align="right">
-	<form action="/list" method="GET">
+	<form action="list" method="POST">
 	@csrf
 		<input type="submit" value="戻る" />
 	</form>
