@@ -1,21 +1,15 @@
 <?php
 
-// namespace App\Http\Controllers\Top;
+namespace App\Http\Controllers\Top;
 
-// use App\Http\Controllers\Controller;
-// use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-// class topController extends Controller
-// {
-//         public function showList(){
+class topController extends Controller
+{
+        public function showTop(){
         
-//         return view('list');
+        return view('top');
     
-//     }
-    
-//          public function showTest(){
-        
-//         return view('test');
-        
-//     }
-// }
+    }
+}

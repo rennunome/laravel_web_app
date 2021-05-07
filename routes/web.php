@@ -17,17 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/top', function () {
+    return view('top/top');
+})->middleware(['auth'])->name('top');
 
 require __DIR__.'/auth.php';
 
-//Top画面に遷移
-Route::get('/top', function () {
-    return view('top/top');
-});
-//List画面に遷移
-Route::post('/list', function () {
-        return view('list/list');
-    });
+//list画面にリストを表示
+Route::post('/list', 'App\Http\Controllers\qaList\listController@showList');
+
+//reg画面表示
+Route::get('/reg', 'App\Http\Controllers\Register\regController@showForm');
+
+//reg入力値バリデーション
+Route::post('/reg', 'App\Http\Controllers\Register\regController@validateForm');
+
+//DB登録
+Route::post('/reg', 'App\Http\Controllers\Register\regController@qaDb');
