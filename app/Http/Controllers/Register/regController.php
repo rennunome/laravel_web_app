@@ -14,7 +14,7 @@ class regController extends Controller
     {
         return view('list.reg');
     }
-    
+  
     // questionsテーブルにinsertして登録したIDを取得
     private function _insertQuestionByGetLastId($question) {
         $date = date('Y-m-d H:i:s');
@@ -29,8 +29,7 @@ class regController extends Controller
             $data[] = compact('answer', 'questions_id');
         }
         DB::table('correct_answers')->insert($data);
-    }
-    
+
     public function qaDb(Request $request) {
         $question = $request->input('question');
         $answers = $request->input('answers');

@@ -23,7 +23,7 @@ Route::get('/top', function () {
 
 require __DIR__.'/auth.php';
 
-//list画面にリストを表示
+//リスト表示
 Route::post('/list', 'App\Http\Controllers\qaList\listController@showList');
 
 //reg画面表示
