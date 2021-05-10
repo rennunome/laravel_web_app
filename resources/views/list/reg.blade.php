@@ -38,8 +38,14 @@ function deleteBtn(target) {
 </script>
 
 <h2>問題・答え新規登録画面</h2>
-<form action="reg" method="post" id="qaForm">
+<form action="regValidate" method="post" id="qaForm">
 @csrf
+<?php 
+if(isset($error))
+{
+echo $error; 
+}?>
+<br />
 	<label for="question">問題：</label>
 	<input type="text" name="question" /><br />
 	<label for="answer">答え：</label><br />
