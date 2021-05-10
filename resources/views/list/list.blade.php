@@ -22,7 +22,7 @@
 <input type="hidden" name="questions_id" value="{{$q->id}}" /> 
 <input type="submit" value="編集" /> 
 </form>
-<form action="delete_confirm" method="POST">
+<form action="deleteConfirm" method="POST">
 @csrf
 <input type="hidden" name="questions_id" value="{{$q->id}}" />
 <input type="submit" value="削除" />
