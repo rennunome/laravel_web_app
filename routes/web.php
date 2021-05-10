@@ -34,3 +34,6 @@ Route::post('/regValidate', 'App\Http\Controllers\Register\regValidateController
 
 //DB登録
 Route::post('/reg', 'App\Http\Controllers\Register\regController@qaDb');
+
+//delete confirm画面表示
+Route::post('/deleteConfirm', 'App\Http\Controllers\Delete\deleteController@findByQuestionsId');
