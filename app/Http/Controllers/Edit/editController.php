@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Edit;
 
 use App\Http\Controllers\Controller;
@@ -10,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class editController extends Controller
 {
+
     public function findByQuestionsId(Request $request)
     {
         $questions_id = $request['questions_id'];
@@ -23,7 +23,7 @@ class editController extends Controller
             'answers' => $answers
         ]);
     }
-    
+
     public function showEditConfirm(Request $request)
     {
         $questions_id = $request['questions_id'];
@@ -37,20 +37,21 @@ class editController extends Controller
             'questions_id' => $questions_id
         ]);
     }
-    
+
     public function qaEditDb(Request $request)
     {
         $questions_id = $request['questions_id'];
         
         $q = Questions::where('id', $questions_id)->first();
         $q->question = $request->input('question'); // echo gettype($q->question); string
-        $q->save(); //echo gettype($q); object
-        
-        $answers = DB::table('correct_answers')->where('questions_id', $questions_id)->get();
-        foreach($answers as $a){
-           $a->answer = $request->input('answers'); // echo gettype($a->answer); string
-           $a->save(); //echo gettype($a); object
+        $q->save(); // echo gettype($q); object
+
+        $answers = DB::table('correct_answers')->where('questions_id', $questions_id)->get(); // echo gettype($answers); object
+        foreach ($answers as $a) {
+            $a->answer = $request->input('answers');  //echo gettype($a->answer); string
+            $a->save();
         }
+
         $questions = Questions::all();
         $correct_answers = CorrectAnswers::all();
         return view('list.list', compact('questions', 'correct_answers'));
