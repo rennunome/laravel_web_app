@@ -1,19 +1,17 @@
 <h2>問題・答え編集確認画面</h2>
-<form action="editdb" method="POST">
+<form action="editDb" method="POST">
 @csrf
 <label for="question_id">問題：</label>
-<input type= "text" name= "questions_id" value ="{{ $questions_id }}" readonly />
+<input type= "text" name= "questions_id" value ="{{ $questions_id }}" readonly /><br />
 <input type= "text" name= "question" value ="{{ $question }}" />
 <br>
-@if(isset($answer_ids))
 @foreach($answer_ids as $value)
-@if($loop->count)
 <label>答え：</label>
-  <input type="text" name="answer_ids[]" value="{{ $value-> answer_ids }}" readonly />
-  <input type="text" name="answer[]" value="{{ $value-> answer  }}"><br />
-@endif
+<input type="text" name="answer_ids[]" value="{{ $value }}" readonly /><br />
 @endforeach
-@endif
+@foreach($answers as $value)
+<input type="text" name="answers[]" value="{{ $value }}" readonly /><br />
+@endforeach
 	<input type="submit" value="更新">
 	</form>
 	<div align="right">
