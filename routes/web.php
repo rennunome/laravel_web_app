@@ -40,3 +40,12 @@ Route::post('/deleteConfirm', 'App\Http\Controllers\Delete\deleteController@find
 
 //delete confirm画面表示
 Route::get('/delete', 'App\Http\Controllers\Delete\deleteController@deleteQAndA');
+
+//edit画面表示
+Route::get('/edit', 'App\Http\Controllers\Edit\editController@findByQuestionsId');
+
+//editConfirm画面表示
+Route::post('/edit', 'App\Http\Controllers\Edit\editController@showEditConfirm');
+
+//DB登録
+Route::post('/editConfirm', 'App\Http\Controllers\Edit\editController@qaEditDb');

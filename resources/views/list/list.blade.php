@@ -17,7 +17,7 @@
 <input type="text" name="answer[]" value="{{$ca->answer}}" readonly />
 @endif
 @endforeach
-<form action="edit" method="POST">
+<form action="edit" method="GET">
 @csrf
 <input type="hidden" name="questions_id" value="{{$q->id}}" /> 
 <input type="submit" value="編集" /> 
