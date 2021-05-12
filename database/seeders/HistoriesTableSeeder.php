@@ -1,14 +1,13 @@
 <?php
+
 namespace Database\Seeders;
 
+use App\Models\Histories;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\CorrectAnswers;
-use App\Models\Questions;
 
-class CorrectAnswersTableSeeder extends Seeder
+class HistoriesTableSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -17,20 +16,19 @@ class CorrectAnswersTableSeeder extends Seeder
     public function run()
     {
         // テーブルのクリア
-        DB::table('correct_answers')->truncate();
+        DB::table('histories')->truncate();
         
         // 初期データ用意（列名をキーとする連想配列）
-        $correct_answers = [
-            ['answer' => 'Sunny',
-                'questions_id' => 1,
+        $histories = [
+            ['user_id' => 1,
+                'point' => 100,
                 'created_at' => time(),
-                'updated_at' => time(),
             ],
         ];
-
+        
         // 登録
-        foreach ($correct_answers as $correct_answer) {
-            CorrectAnswers::create($correct_answer);
+        foreach ($histories as $history) {
+            Histories::create($history);
         }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Histories;
 use App\Models\Questions;
 use App\Models\CorrectAnswers;
 
@@ -21,15 +22,15 @@ class testController extends Controller
         $questions_id = $request->input('questions_id');
         $test_answers = $request->input('test_answers');
         
-        //ログインしているユーザー情報を取得
-        $user = Auth::user()->get();
-        
+        //ログインしているユーザーidを取得
+        $user_id = Auth::id();
+       
         $score = 0.0;
         
         //採点処理
         for ($i = 0; $i < count($test_answers); $i++) {
             for ($j = 0; $j < count($questions_id); $j++) {
-               $q_id = DB::table('correct_answers')->where('questions_id', $questions_id)->get(['questions_id', 'answer']);
+               $q_id = DB::table('correct_answers')->where('questions_id', $questions_id[$j])->get(['questions_id', 'answer']);
                 for ($k = 0; $k < count($q_id); $k++) {
                     if($q_id[$k]->questions_id == $questions_id[$j]){
                         if($q_id[$k]->answer == $test_answers[$i]){
@@ -48,6 +49,10 @@ class testController extends Controller
         //採点日時
         date_default_timezone_set('Asia/Tokyo');
         $date = date("Y/m/d H:i");
-        view('test.result', compact('total_qs', 'total', 'total_score', 'date', 'user') );
+        
+        //DB登録処理
+        Histories::insert(['user_id' => $user_id, 'point' => $total_score, 'created_at' => $date]);
+        
+       return view('test.result', compact('total_qs', 'total', 'total_score', 'date') );
     }
 }
