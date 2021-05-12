@@ -43,15 +43,20 @@ class editController extends Controller
         $questions_id = $request['questions_id'];
         
         $q = Questions::where('id', $questions_id)->first();
-        $q->question = $request->input('question'); // echo gettype($q->question); string
-        $q->save(); // echo gettype($q); object
-
-        $answers = DB::table('correct_answers')->where('questions_id', $questions_id)->get(); // echo gettype($answers); object
-        foreach ($answers as $a) {
-            $a->answer = $request->input('answers');  //echo gettype($a->answer); string
-            $a->save();
+        $q->question = $request->input('question'); 
+        $q->save(); 
+        
+        $answers = DB::table('correct_answers')->where('questions_id', $questions_id)->get(); 
+       
+       //answer_idsを指定してupdateメソッドでDB登録
+        $answer_ids = $request->input('answer_ids');
+        $answers = $request->input('answers');
+        
+        for ($i = 0; $i < count($answers); $i++) {
+            DB::table('correct_answers')->where('id', $answer_ids[$i])->update(['answer'=> $answers[$i]]);
         }
-
+        
+        //listに遷移
         $questions = Questions::all();
         $correct_answers = CorrectAnswers::all();
         return view('list.list', compact('questions', 'correct_answers'));

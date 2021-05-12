@@ -36,11 +36,10 @@ function deleteBtn(target) {
 <h2>問題・答え編集画面</h2>
 <form action="editValidate" method="POST">
 @csrf
-<?php 
-if(isset($error))
-{
+@if(isset($error))
 echo $error; 
-}?><br />
+@endif
+<br />
 <label>問題：</label>
 <input type= "text" name= "questions_id" value ="{{$question->id}}" readonly />
 
