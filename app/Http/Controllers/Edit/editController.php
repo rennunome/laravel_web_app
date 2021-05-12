@@ -45,15 +45,15 @@ class editController extends Controller
         $q = Questions::where('id', $questions_id)->first();
         $q->question = $request->input('question'); 
         $q->save(); 
-        
-        $answers = DB::table('correct_answers')->where('questions_id', $questions_id)->get(); 
        
        //answer_idsを指定してupdateメソッドでDB登録
         $answer_ids = $request->input('answer_ids');
         $answers = $request->input('answers');
         
-        for ($i = 0; $i < count($answers); $i++) {
-            DB::table('correct_answers')->where('id', $answer_ids[$i])->update(['answer'=> $answers[$i]]);
+        for ($i = 0; $i < count($answers); $i ++) {
+            DB::table('correct_answers')->where('id', $answer_ids[$i])->update([
+                'answer' => $answers[$i]
+            ]);
         }
         
         //listに遷移
