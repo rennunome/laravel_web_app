@@ -49,3 +49,9 @@ Route::post('/editValidate', 'App\Http\Controllers\Edit\editValidateController@v
 
 //DB登録
 Route::post('/editDb', 'App\Http\Controllers\Edit\editController@qaEditDb');
+
+//test画面表示
+Route::get('/test', 'App\Http\Controllers\Test\testController@showTest');
+
+//テスト採点
+Route::post('/mark', 'App\Http\Controllers\Test\testController@markTest');
