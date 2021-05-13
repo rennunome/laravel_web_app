@@ -11,6 +11,7 @@ class userListController extends Controller
     public function showUserList()
     {
         $user_list =  DB::table('users')->get();
+        //->where('deleteflag' == 0)
         return view('user.userList', compact('user_list'));
     }
     
