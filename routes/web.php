@@ -17,11 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/top', function () {
-    return view('top/top');
-})->middleware(['auth'])->name('top');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//トップ表示
+Route::get('/top', 'App\Http\Controllers\Top\topController@showTop');
 
 //リスト表示
 Route::post('/list', 'App\Http\Controllers\qaList\listController@showList');
@@ -55,3 +58,12 @@ Route::get('/test', 'App\Http\Controllers\Test\testController@showTest');
 
 //テスト採点
 Route::post('/mark', 'App\Http\Controllers\Test\testController@markTest');
+
+//History画面表示
+Route::get('/history', 'App\Http\Controllers\History\historyController@showHistory');
+
+//Userリスト表示
+Route::get('/userList', 'App\Http\Controllers\User\userListController@showUserList');
+
+//User登録画面表示（Laravel Breezeデフォルト）
+Route::get('/authRegister', 'App\Http\Controllers\Auth\RegisteredUserController@create');

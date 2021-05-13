@@ -1,3 +1,6 @@
+<div>
+@extends('myHeader/myHeader')
+</div>
 <div align="center">
 <h1>テスト一覧</h1>
 </div>
@@ -13,9 +16,3 @@
  @endforeach
         <input type="submit" value="採点" />
 </form>
-<div align="right">
-	<form action="top" method="GET">
-	@csrf
-		<input type="submit" value="戻る" />
-	</form>
-</div>
