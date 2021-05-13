@@ -67,3 +67,9 @@ Route::get('/userList', 'App\Http\Controllers\User\userListController@showUserLi
 
 //User登録画面表示（Laravel Breezeデフォルト）
 Route::get('/authRegister', 'App\Http\Controllers\Auth\RegisteredUserController@create');
+
+//UserDeleteConfirm画面表示
+Route::get('/userDeleteConfirm', 'App\Http\Controllers\User\userDeleteController@showDelete');
+
+//UserDeleteConfirm画面表示
+Route::post('/userDelete', 'App\Http\Controllers\User\userDeleteController@userDelete');
