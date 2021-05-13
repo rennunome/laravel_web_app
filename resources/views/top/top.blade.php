@@ -11,11 +11,11 @@
 @csrf
 <input type="submit" value="テストをする ＞">
 </form>
-<form action="history.php"  method="post">
+<form action="history"  method="GET">
 @csrf
 <input type="submit" value="過去の採点結果をみる ＞">
 </form>
-<form action="user_list.php"  method="post">
+<form action="userList"  method="GET">
 @csrf
 <input type="submit" value="ユーザを追加・編集する＞">
 </form>
