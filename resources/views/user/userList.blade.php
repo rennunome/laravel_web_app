@@ -7,7 +7,7 @@
 			<input type="submit" value="新規登録">
 		</form>
 	</div>
-	@foreach($user as $value)
+	@foreach($user_list as $value)
 	<div>
 		<label for="user_id">ID　　　　　　　　 </label> <label for="auth">権限 　　　　　　　</label>
 		 <label for="user_name">ユーザー名</label><br>
@@ -20,7 +20,6 @@
 		<input type="hidden" name="user_id" value="{{ $value->id }}">
 		<input type="hidden" name="user_name" value="{{ $value->name}}">
 		<input type="hidden" name="admin" value="{{ $value->admin_flag}}">
-		<input type="hidden" name="pw" value="{{ $value->password}}">
 	</form>
 	<form action="userDeleteConfirm" method="GET">
 		<input type="submit" value="削除"> 

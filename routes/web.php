@@ -73,9 +73,3 @@ Route::get('/userDeleteConfirm', 'App\Http\Controllers\User\userDeleteController
 
 //UserDeleteConfirm画面表示
 Route::post('/userDelete', 'App\Http\Controllers\User\userDeleteController@userDelete');
-
-//UserEdit画面表示
-Route::get('/userEdit', 'App\Http\Controllers\User\userEditController@userEdit');
-
-//UserEditValidation
-Route::post('/userEditValidation', 'App\Http\Controllers\User\userValidationController@userValidation');

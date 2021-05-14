@@ -11,9 +11,9 @@ class userListController extends Controller
 {
     public function showUserList()
     {
-        $user = DB::table('users')->where('deleteflag' , 0)->get();
+        $user_list = DB::table('users')->where('deleteflag' , 0)->get();
        
-        return view('user.userList', compact('user'));
+        return view('user.userList', compact('user_list'));
     }
     
     public function registerUser()
