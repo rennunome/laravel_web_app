@@ -10,8 +10,10 @@ class userEditController extends Controller
 {
     public function userEdit(Request $request){
     $user_id = $request->input('user_id');
-    $user = User::where('id', $user_id)->get();
-    
-    view('user.userEdit', compact('user'));
+    $user_name = $request->input('user_name');
+    $admin = $request->input('admin');
+    $pw = $request->input('pw');
+   
+     return view('user.userEdit', compact('user_id', 'user_name', 'admin', 'pw'));
     }
 }
