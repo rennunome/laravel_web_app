@@ -10,11 +10,11 @@
 <input type="text" name="password" id="password" value="<?= $pw ?>" readonly /><br>
 <br>
 			<label for="admin">管理者</label>
-			@if ($admin != null)
-			<input type="checkbox" name="admin" value = "管理者" />
-			@else
-			<input type= "checkbox" name="admin" value = "一般" />
-			@endif
+@if($admin == "on")
+<input type="checkbox" name="admin" value = "管理者" checked />
+@else
+<input type= "checkbox" name="admin" value = "一般" />
+@endif
 			<br>
 	</div>
 	<div align="right">

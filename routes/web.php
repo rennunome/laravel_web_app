@@ -79,3 +79,6 @@ Route::get('/userEdit', 'App\Http\Controllers\User\userEditController@userEdit')
 
 //UserEditValidation
 Route::post('/userEditValidation', 'App\Http\Controllers\User\userValidationController@userValidation');
+
+//UserEdit画面表示
+Route::post('/userEdit', 'App\Http\Controllers\User\userEditController@userEditDb');
