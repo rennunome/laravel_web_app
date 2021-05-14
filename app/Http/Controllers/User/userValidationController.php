@@ -23,7 +23,7 @@ class userValidationController extends Controller
         
         //DBから取得の値
         $user = DB::table('users')->where('id', $user_id)->get();
-       
+        
         $error_un = "";
         $error_pw= "";
 
