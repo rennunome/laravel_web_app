@@ -66,7 +66,7 @@ Route::get('/history', 'App\Http\Controllers\History\historyController@showHisto
 Route::get('/userList', 'App\Http\Controllers\User\userListController@showUserList');
 
 //User登録画面表示（Laravel Breezeデフォルト）
-Route::get('/authRegister', 'App\Http\Controllers\Auth\RegisteredUserController@create');
+Route::post('/authRegister', 'App\Http\Controllers\Auth\RegisteredUserController@create');
 
 //UserDeleteConfirm画面表示
 Route::get('/userDeleteConfirm', 'App\Http\Controllers\User\userDeleteController@showDelete');
@@ -82,3 +82,15 @@ Route::post('/userEditValidation', 'App\Http\Controllers\User\userValidationCont
 
 //UserEdit画面表示
 Route::post('/userEdit', 'App\Http\Controllers\User\userEditController@userEditDb');
+
+//logoutに遷移
+// Route::post('/logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
+
+//UserRegister画面表示
+Route::get('/showUser', 'App\Http\Controllers\User\userRegisterController@showUser');
+
+//UserRegisterValidation
+Route::get('/userValidate', 'App\Http\Controllers\User\userRegisterValidationController@userRegisterValidation');
+
+//UserDb登録
+Route::post('/userDb', 'App\Http\Controllers\User\userRegisterController@userDb');

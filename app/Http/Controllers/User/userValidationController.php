@@ -53,6 +53,6 @@ class userValidationController extends Controller
             return view('user.userEdit', compact('error_pw',  'user_id', 'user_name', 'pw', 'admin'));
         }
        
-        return view('user.userEditConfirm', compact( 'user_id', 'user_name', 'pw', 'admin'));
+        return view('user.userEditConfirm', compact( 'user_id', 'user_name', 'pw', 'admin', 'password_confirm'));
     }
 }
