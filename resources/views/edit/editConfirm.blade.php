@@ -15,8 +15,9 @@
 	<input type="submit" value="更新">
 	</form>
 	<div align="right">
-	<form action="edit" method="POST">
+	<form action="edit" method="GET">
 	@csrf
+	<input type="hidden" name="questions_id" value="<?=$questions_id?>" />
 		<input type="submit" value="戻る">
 	</form>
 	</div>

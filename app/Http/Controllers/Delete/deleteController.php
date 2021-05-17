@@ -15,7 +15,9 @@ class deleteController extends Controller
         $questions_id = $request['questions_id'];
         $question = DB::table('questions')->find($questions_id);
         $answer = DB::table('correct_answers')->where('questions_id', $questions_id)->get(['id','answer']);
-        return view('delete.deleteConfirm')->with(['question' => $question, 'answer' => $answer]);
+        $q_all = Questions::all();
+        $ca_all = CorrectAnswers::all();
+        return view('delete.deleteConfirm')->with(['question' => $question, 'answer' => $answer, 'questions' => $q_all, 'correct_answers' => $ca_all]);
     }
     
     public function deleteQAndA(Request $request){

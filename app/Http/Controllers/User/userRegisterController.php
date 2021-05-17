@@ -19,11 +19,10 @@ class userRegisterController extends Controller
         $user_name = $request->input('user_name');
         $password = $request->input('password');
         $admin = $request->input('admin');
-        if($admin == null){
-            $admin = 0;
-        } else{
-            $admin = 1;
-        }
+       
+        //if文を三項演算子で1行にまとめる
+        $admin = $admin == null  ?  0:1;
+        
         $email = $request->input('email');
         
         $data = [];

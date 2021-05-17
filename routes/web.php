@@ -83,9 +83,6 @@ Route::post('/userEditValidation', 'App\Http\Controllers\User\userValidationCont
 //UserEdit画面表示
 Route::post('/userEdit', 'App\Http\Controllers\User\userEditController@userEditDb');
 
-//logoutに遷移
-// Route::post('/logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
-
 //UserRegister画面表示
 Route::get('/showUser', 'App\Http\Controllers\User\userRegisterController@showUser');
 
