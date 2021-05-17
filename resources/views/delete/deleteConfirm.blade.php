@@ -14,6 +14,9 @@
 	</form>
 	<div align="right">
 	<form action="list" method="POST">
+	@csrf
 		<input type="submit" value="戻る">
+		<input type="hidden" name = "" value="{{ $questions }}" />
+		<input type="hidden" name = "" value="{{ $correct_answers }}" />
 	</form>
 	</div>

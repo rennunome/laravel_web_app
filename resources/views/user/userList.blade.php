@@ -3,7 +3,8 @@
 </div>
 <div align="center">
 		<h1>ユーザー一覧</h1>
-		<form action="authRegister" method="GET">
+		<form action="showUser" method="GET">
+		@csrf
 			<input type="submit" value="新規登録">
 		</form>
 	</div>
